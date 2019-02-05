@@ -1,13 +1,12 @@
-// Two line text scroller v1.4
+// Two line text scroller v1.5
 
-// DO NOT FORGET TO ADD 1 to the shiftcmd addresses
-// DO NOT FORGET TO ADD 1 to the shiftcmd addresses
+// Example output on https://www.youtube.com/watch?v=51BmsW9uXG8
 
-// Example on https://www.youtube.com/watch?v=51BmsW9uXG8
+// Mentioned on https://www.kickstarter.com/projects/1897710270/digirule2-code-in-binary-like-its-1975/posts/2370351
 
 // MIT License
 
-// Copyright (c) 2018 Kevin J. Walters
+// Copyright (c) 2018-2019 Kevin J. Walters
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,11 +71,11 @@ shiftrl carrystore  // carry is now bit 7 of row1datafirst
 // now rotate all the data to shift one pixel left
 copylr datalen bytecounter
 copyla row1datalast
-copyar row1shiftcmdADDONE // VALUE MUST BE CHANGED, ADD 1 TO IT
+copyar row1shiftcmd + 1
 :row1rotateloop
-:row1shiftcmdADDONE
+:row1shiftcmd
 shiftrl dummyaddr // this address gets replaced - SMC!
-decr row1shiftcmdADDONE // VALUE MUST BE CHANGED, ADD 1 TO IT
+decr row1shiftcmd + 1
 decrjz bytecounter
 jump row1rotateloop  // this will be skipped when bytecounter is zero
 
@@ -94,11 +93,11 @@ shiftrl carrystore  // carry is now bit 7 of row2datafirst
 // now rotate all the data to shift one pixel left
 copylr datalen bytecounter
 copyla row2datalast
-copyar row2shiftcmdADDONE // VALUE MUST BE CHANGED, ADD 1 TO IT
+copyar row2shiftcmd + 1
 :row2rotateloop
-:row2shiftcmdADDONE
+:row2shiftcmd
 shiftrl dummyaddr // this address gets replaced - SMC!
-decr row2shiftcmdADDONE // VALUE MUST BE CHANGED, ADD 1 TO IT
+decr row2shiftcmd + 1
 decrjz bytecounter
 jump row2rotateloop  // this will be skipped when bytecounter is zero
 
